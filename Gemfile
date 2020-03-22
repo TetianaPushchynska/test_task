@@ -28,6 +28,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'mysql2', '~> 0.5.2'
 gem 'devise'
 gem 'haml'
+gem 'bootstrap', '~> 4.4.1'
+gem 'jquery-rails'
 
 
 # Reduces boot times through caching; required in config/boot.rb

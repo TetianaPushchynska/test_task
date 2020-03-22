@@ -1,4 +1,4 @@
-class DepartmentsController < ApplicationController
+class Admin::DepartmentsController < ApplicationController
   before_action :set_department, only: %i[show edit update destroy]
 
   def index
@@ -16,7 +16,7 @@ class DepartmentsController < ApplicationController
   def create
     @department = Department.new(department_params)
     if @department.save
-      redirect_to @department, notice: 'Department was successfully created.'
+      redirect_to admin_departments_path, success: 'Department was successfully created.'
     else
       render :new
     end
@@ -24,7 +24,7 @@ class DepartmentsController < ApplicationController
 
   def update
     if @department.update(department_params)
-      redirect_to @department, notice: 'Department was successfully updated.'
+      redirect_to admin_departments_path, success: 'Department was successfully updated.'
     else
       render :edit
     end
@@ -32,7 +32,7 @@ class DepartmentsController < ApplicationController
 
   def destroy
     @department.destroy
-    redirect_to departments_path, notice: 'Department was successfully destroyed.'
+    redirect_to admin_departments_path, success: 'Department was successfully destroyed.'
   end
 
   private

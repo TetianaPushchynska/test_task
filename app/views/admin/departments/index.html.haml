@@ -1,0 +1,22 @@
+%h2= "All departments"
+= link_to 'New Department', new_admin_department_path
+%p#notice= notice
+
+.row
+  .col-md-12
+    .table-responsive
+      %table.table.table-striped.table-bordered.table-hover
+        %thead
+          %tr
+            %th= "ID"
+            %th= "Name"
+            %th= "Actions"
+
+        %tbody
+          - @departments.each do |department|
+            %tr
+              %td= department.id
+              %td= department.name
+              %td
+                %a= link_to "Edit", edit_admin_department_path(department)
+                %a= link_to "Delete", [:admin, department], data: { confirm: "Are you sure" }, method: :delete

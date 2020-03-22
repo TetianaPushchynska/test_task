@@ -10,8 +10,42 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <div class="container">
+
+      <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href="#"><%= "Test Task" %></a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item <%= 'active' if current_page?(root_path) || current_page?(employees_path) %> ">
+              <a class="nav-link" href="<%= employees_path %>"><%= "All employees" %> <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item <%= 'active' if current_page?(root_path) || current_page?(admin_departments_path) %> ">
+              <a class="nav-link" href="<%= admin_departments_path %>"><%= "All departments" %> <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <ul class="navbar-nav mr-auto">
+            <% if employee_signed_in? %>
+                <li class="nav-item <%= 'active' if current_page?(destroy_employee_session_path) %> ">
+                <%= link_to t("common.sign_out"), destroy_employee_session_path, method: :delete, class: "nav-link" %>
+              </li>
+            <% else %>
+              <li class="nav-item <%= 'active' if current_page?(new_employee_session_path) %> ">
+                <%= link_to t("common.log_in"), new_employee_session_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item <%= 'active' if current_page?(new_employee_registration_path) %> ">
+                <%= link_to t("common.sign_up"), new_employee_registration_path, class: "nav-link" %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </div>
   </body>
 </html>

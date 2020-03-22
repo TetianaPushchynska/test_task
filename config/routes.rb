@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :employees
-  root 'departments#index'
+  devise_for :employees, controllers: { registrations: 'registrations' }
+  root 'employees#index'
 
-  resources :departments
+  resources :employees, only: [:index]
+
+  namespace :admin do
+    resources :departments
+  end
 end
