@@ -20,3 +20,5 @@
               %td
                 %a= link_to "Edit", edit_admin_department_path(department)
                 %a= link_to "Delete", [:admin, department], data: { confirm: "Are you sure" }, method: :delete
+
+=paginate @departments

@@ -1,8 +1,8 @@
-class Admin::DepartmentsController < ApplicationController
+class Admin::DepartmentsController < Admin::AdminController
   before_action :set_department, only: %i[show edit update destroy]
 
   def index
-    @departments = Department.all
+    @departments = Department.all.page(params[:page]).per(2)
   end
 
   def show; end

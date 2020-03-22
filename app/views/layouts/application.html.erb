@@ -19,9 +19,11 @@
             <li class="nav-item <%= 'active' if current_page?(root_path) || current_page?(employees_path) %> ">
               <a class="nav-link" href="<%= employees_path %>"><%= "All employees" %> <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item <%= 'active' if current_page?(root_path) || current_page?(admin_departments_path) %> ">
-              <a class="nav-link" href="<%= admin_departments_path %>"><%= "All departments" %> <span class="sr-only">(current)</span></a>
-            </li>
+            <% if employee_signed_in? && current_employee.admin? %>
+              <li class="nav-item <%= 'active' if current_page?(root_path) || current_page?(admin_departments_path) %> ">
+                <a class="nav-link" href="<%= admin_departments_path %>"><%= "All departments" %> <span class="sr-only">(current)</span></a>
+              </li>
+            <% end %>
           </ul>
         </div>
 

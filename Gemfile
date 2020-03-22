@@ -30,6 +30,7 @@ gem 'devise'
 gem 'haml'
 gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
+gem 'kaminari'
 
 
 # Reduces boot times through caching; required in config/boot.rb

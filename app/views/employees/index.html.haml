@@ -23,3 +23,5 @@
               %td
                 %a= link_to "Edit", edit_employee_registration_path(employee)
                 %a= link_to "Delete", employees_path, data: { confirm: "Are you sure" }, method: :delete
+
+= paginate @employees
